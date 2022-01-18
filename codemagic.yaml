@@ -1,80 +1,80 @@
 workflows:
-#  ios-workflow:
-#    name: ios_workflow
-#    environment:
-#      groups:
-#        - app_store_credentials # <-- (Includes APP_STORE_CONNECT_ISSUER_ID, APP_STORE_CONNECT_KEY_IDENTIFIER, APP_STORE_CONNECT_PRIVATE_KEY)
-#        - certificate_credentials # <-- (Includes CERTIFICATE_PRIVATE_KEY)
-#        - other
-#       # Add the group environment variables in Codemagic UI (either in Application/Team variables) - https://docs.codemagic.io/variables/environment-variable-groups/
-#      vars:
-#        XCODE_WORKSPACE: "Calendar.xcodeproj"  # PUT YOUR WORKSPACE NAME HERE
-#        XCODE_SCHEME: "Calender" # PUT THE NAME OF YOUR SCHEME HERE
-#      xcode: latest
-#      cocoapods: default
-#    triggering:
-#      events:
-#        - push
-#      branch_patterns:
-#        - pattern: master
-#          include: true
-#          source: true
-#    scripts:
-#      - name: Set up keychain to be used for code signing using Codemagic CLI 'keychain' command
-#        script: |
-#                    keychain initialize
-#      - name: Fetch signing files
-#        script: |
-#                    app-store-connect fetch-signing-files $(xcode-project detect-bundle-id) --type IOS_APP_STORE --create
-#      - name: Add certificates to keychain
-#        script: |
-#                    keychain add-certificates
-#      - name: Increment build number
-#        script: agvtool new-version -all $(($BUILD_NUMBER +1))
-#      - name: Set up code signing settings on Xcode project
-#        script: xcode-project use-profiles
-#      - name: Build ipa for distribution
-#        script: xcode-project build-ipa --workspace "$XCODE_WORKSPACE" --scheme "$XCODE_SCHEME"
-#    artifacts:
-#      - build/ios/ipa/*.ipa
-#      - /tmp/xcodebuild_logs/*.log
-#      - $HOME/Library/Developer/Xcode/DerivedData/**/Build/**/*.dSYM
-#    publishing:
-#      app_store_connect:
-#        api_key: $APP_STORE_CONNECT_PRIVATE_KEY      # Contents of the API key
-#        key_id: $APP_STORE_CONNECT_KEY_IDENTIFIER    # Alphanumeric value that identifies the API key
-#        issuer_id: $APP_STORE_CONNECT_ISSUER_ID      # Alphanumeric value that identifies who created the API key
-#        submit_to_testflight: false        # Optional boolean, defaults to false. Whether or not to submit the uploaded build to TestFlight to automatically enroll your build to beta testers.
-#      # beta_groups:                                  # Specify the names of beta tester groups that will get access to the build once it has passed beta review.
-#      #     - group name 1
-#      #     - group name 2
-      
-      
- ios-project-debug: # workflow ID
-    name: iOS debug # workflow name
+  ios-workflow:
+    name: ios_workflow
     environment:
+      groups:
+        - app_store_credentials # <-- (Includes APP_STORE_CONNECT_ISSUER_ID, APP_STORE_CONNECT_KEY_IDENTIFIER, APP_STORE_CONNECT_PRIVATE_KEY)
+        - certificate_credentials # <-- (Includes CERTIFICATE_PRIVATE_KEY)
+        - other
+       # Add the group environment variables in Codemagic UI (either in Application/Team variables) - https://docs.codemagic.io/variables/environment-variable-groups/
+      vars:
+        XCODE_WORKSPACE: "Calendar.xcodeproj"  # PUT YOUR WORKSPACE NAME HERE
+        XCODE_SCHEME: "Calender" # PUT THE NAME OF YOUR SCHEME HERE
       xcode: latest
       cocoapods: default
-      vars:
-          XCODE_PROJECT: "Calendar.xcodeproj" # <-- Put the name of your project here.
-          XCODE_SCHEME: "Calendar" # <-- Put the name of your scheme here.
+    triggering:
+      events:
+        - push
+      branch_patterns:
+        - pattern: master
+          include: true
+          source: true
     scripts:
-#      - name: Run tests
-#        script: |
-#          xcodebuild \
-#          -project "$XCODE_PROJECT" \
-#          -scheme "$XCODE_SCHEME" \
-#          -sdk iphonesimulator \
-#          -destination 'platform=iOS Simulator,name=iPhone 12,OS=14.1' \
-#          clean build test CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO
-      - name: Build debug app
+      - name: Set up keychain to be used for code signing using Codemagic CLI 'keychain' command
         script: |
-          xcodebuild build -project "$XCODE_PROJECT" \
-          -scheme "$XCODE_SCHEME" \
-          CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO CODE_SIGNING_ALLOWED=NO
+                    keychain initialize
+      - name: Fetch signing files
+        script: |
+                    app-store-connect fetch-signing-files $(xcode-project detect-bundle-id) --type IOS_APP_STORE --create
+      - name: Add certificates to keychain
+        script: |
+                    keychain add-certificates
+      - name: Increment build number
+        script: agvtool new-version -all $(($BUILD_NUMBER +1))
+      - name: Set up code signing settings on Xcode project
+        script: xcode-project use-profiles
+      - name: Build ipa for distribution
+        script: xcode-project build-ipa --workspace "$XCODE_WORKSPACE" --scheme "$XCODE_SCHEME"
     artifacts:
-      - $HOME/Library/Developer/Xcode/DerivedData/**/Build/**/*.app
+      - build/ios/ipa/*.ipa
+      - /tmp/xcodebuild_logs/*.log
+      - $HOME/Library/Developer/Xcode/DerivedData/**/Build/**/*.dSYM
+    publishing:
+      app_store_connect:
+        api_key: $APP_STORE_CONNECT_PRIVATE_KEY      # Contents of the API key
+        key_id: $APP_STORE_CONNECT_KEY_IDENTIFIER    # Alphanumeric value that identifies the API key
+        issuer_id: $APP_STORE_CONNECT_ISSUER_ID      # Alphanumeric value that identifies who created the API key
+        submit_to_testflight: false        # Optional boolean, defaults to false. Whether or not to submit the uploaded build to TestFlight to automatically enroll your build to beta testers.
+      # beta_groups:                                  # Specify the names of beta tester groups that will get access to the build once it has passed beta review.
+      #     - group name 1
+      #     - group name 2
+      
+      
+# ios-project-debug: # workflow ID
+#    name: iOS debug # workflow name
+#    environment:
+#      xcode: latest
+#      cocoapods: default
+#      vars:
+#          XCODE_PROJECT: "Calendar.xcodeproj" # <-- Put the name of your project here.
+#          XCODE_SCHEME: "Calendar" # <-- Put the name of your scheme here.
+#    scripts:
+##      - name: Run tests
+##        script: |
+##          xcodebuild \
+##          -project "$XCODE_PROJECT" \
+##          -scheme "$XCODE_SCHEME" \
+##          -sdk iphonesimulator \
+##          -destination 'platform=iOS Simulator,name=iPhone 12,OS=14.1' \
+##          clean build test CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO
+#      - name: Build debug app
+#        script: |
+#          xcodebuild build -project "$XCODE_PROJECT" \
+#          -scheme "$XCODE_SCHEME" \
+#          CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO CODE_SIGNING_ALLOWED=NO
+#    artifacts:
+#      - $HOME/Library/Developer/Xcode/DerivedData/**/Build/**/*.app
     publishing:
       email:
         recipients:
-          - saranjith.pk@cred.club
+          - saranjith.krishnan@cred.club
