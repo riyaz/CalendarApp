@@ -6,7 +6,7 @@ workflows:
       environment:
         groups:
         # Add the group environment variables in Codemagic UI (either in Application/Team variables) - https://docs.codemagic.io/variables/environment-variable-groups/
-          - test # <-- (Includes CM_CERTIFICATE, CM_CERTIFICATE_PASSWORD, CM_PROVISIONING_PROFILE)
+          - test # <-- (Includes FCI_CERTIFICATE, FCI_CERTIFICATE_PASSWORD, FCI_PROVISIONING_PROFILE)
 #          - app_store_credentials # <-- (Includes APP_STORE_CONNECT_ISSUER_ID, APP_STORE_CONNECT_KEY_IDENTIFIER, APP_STORE_CONNECT_PRIVATE_KEY)
             # APP_STORE_CONNECT_ISSUER_ID <-- Put your App Store Connect Issuer Id here
             # APP_STORE_CONNECT_KEY_IDENTIFIER <-- Put your App Store Connect Key Identifier here
@@ -38,12 +38,12 @@ workflows:
             PROFILES_HOME="$HOME/Library/MobileDevice/Provisioning Profiles"
             mkdir -p "$PROFILES_HOME"
             PROFILE_PATH="$(mktemp "$PROFILES_HOME"/$(uuidgen).mobileprovision)"
-            echo ${CM_PROVISIONING_PROFILE} | base64 --decode > $PROFILE_PATH
+            echo ${FCI_PROVISIONING_PROFILE} | base64 --decode > $PROFILE_PATH
             echo "Saved provisioning profile $PROFILE_PATH"
         - name: Add signing certificate to keychain
           script: |
-            echo $CM_CERTIFICATE | base64 --decode > /tmp/certificate.p12
-            keychain add-certificates --certificate /tmp/certificate.p12 --certificate-password $CM_CERTIFICATE_PASSWORD
+            echo $FCI_CERTIFICATE | base64 --decode > /tmp/certificate.p12
+            keychain add-certificates --certificate /tmp/certificate.p12 --certificate-password $FCI_CERTIFICATE_PASSWORD
         - name: Increment build number
           script: |
             # increment build number
