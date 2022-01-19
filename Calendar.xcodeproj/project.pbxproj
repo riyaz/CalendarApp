@@ -14,9 +14,12 @@
 		7993D33326486B5400406316 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7993D33126486B5400406316 /* LaunchScreen.storyboard */; };
 		7993D33C26486C5400406316 /* CalendarKit in Frameworks */ = {isa = PBXBuildFile; productRef = 7993D33B26486C5400406316 /* CalendarKit */; };
 		799963D4265997FD00AEC712 /* EKWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 799963D3265997FD00AEC712 /* EKWrapper.swift */; };
+		AB5D8CE712B3E19CD2B823BF /* Pods_Calendar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87B1820389A7061D4327B4A3 /* Pods_Calendar.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5A81B5D0CD40A258B7E937E2 /* Pods-Calendar.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Calendar.release.xcconfig"; path = "Target Support Files/Pods-Calendar/Pods-Calendar.release.xcconfig"; sourceTree = "<group>"; };
+		5FE5F57DD2B5B78B2B4958B9 /* Pods-Calendar.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Calendar.debug.xcconfig"; path = "Target Support Files/Pods-Calendar/Pods-Calendar.debug.xcconfig"; sourceTree = "<group>"; };
 		7993D32326486B5300406316 /* Calendar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Calendar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7993D32626486B5300406316 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7993D32826486B5300406316 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -26,6 +29,7 @@
 		7993D33426486B5400406316 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		799442F427472EFE009BF2A9 /* Calendar.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Calendar.entitlements; sourceTree = "<group>"; };
 		799963D3265997FD00AEC712 /* EKWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EKWrapper.swift; sourceTree = "<group>"; };
+		87B1820389A7061D4327B4A3 /* Pods_Calendar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Calendar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -34,17 +38,38 @@
 			buildActionMask = 2147483647;
 			files = (
 				7993D33C26486C5400406316 /* CalendarKit in Frameworks */,
+				AB5D8CE712B3E19CD2B823BF /* Pods_Calendar.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3E0916C7AB675E4CFF0F9239 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				87B1820389A7061D4327B4A3 /* Pods_Calendar.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		76BE123D105A63E01FEDE96A /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				5FE5F57DD2B5B78B2B4958B9 /* Pods-Calendar.debug.xcconfig */,
+				5A81B5D0CD40A258B7E937E2 /* Pods-Calendar.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		7993D31A26486B5300406316 = {
 			isa = PBXGroup;
 			children = (
 				7993D32526486B5300406316 /* Calendar */,
 				7993D32426486B5300406316 /* Products */,
+				76BE123D105A63E01FEDE96A /* Pods */,
+				3E0916C7AB675E4CFF0F9239 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -78,6 +103,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7993D33726486B5400406316 /* Build configuration list for PBXNativeTarget "Calendar" */;
 			buildPhases = (
+				15DB43BA91E13E4BBDC91D5B /* [CP] Check Pods Manifest.lock */,
 				7993D31F26486B5300406316 /* Sources */,
 				7993D32026486B5300406316 /* Frameworks */,
 				7993D32126486B5300406316 /* Resources */,
@@ -118,7 +144,7 @@
 			);
 			mainGroup = 7993D31A26486B5300406316;
 			packageReferences = (
-				7993D33A26486C5400406316 /* XCRemoteSwiftPackageReference "CalendarKit" */,
+				7993D33A26486C5400406316 /* XCRemoteSwiftPackageReference "CalendarKit.git" */,
 			);
 			productRefGroup = 7993D32426486B5300406316 /* Products */;
 			projectDirPath = "";
@@ -140,6 +166,31 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		15DB43BA91E13E4BBDC91D5B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Calendar-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		7993D31F26486B5300406316 /* Sources */ = {
@@ -285,12 +336,13 @@
 		};
 		7993D33826486B5400406316 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5FE5F57DD2B5B78B2B4958B9 /* Pods-Calendar.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Calendar/Calendar.entitlements;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = NH8DK39JPV;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = YES;
 				INFOPLIST_FILE = Calendar/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -300,6 +352,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.dreamplug.cred.codemagic.test;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "";
 				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -308,12 +362,13 @@
 		};
 		7993D33926486B5400406316 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5A81B5D0CD40A258B7E937E2 /* Pods-Calendar.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Calendar/Calendar.entitlements;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = NH8DK39JPV;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = YES;
 				INFOPLIST_FILE = Calendar/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -323,6 +378,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.dreamplug.cred.codemagic.test;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "";
 				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -353,7 +410,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		7993D33A26486C5400406316 /* XCRemoteSwiftPackageReference "CalendarKit" */ = {
+		7993D33A26486C5400406316 /* XCRemoteSwiftPackageReference "CalendarKit.git" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/richardtop/CalendarKit.git";
 			requirement = {
@@ -366,7 +423,7 @@
 /* Begin XCSwiftPackageProductDependency section */
 		7993D33B26486C5400406316 /* CalendarKit */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 7993D33A26486C5400406316 /* XCRemoteSwiftPackageReference "CalendarKit" */;
+			package = 7993D33A26486C5400406316 /* XCRemoteSwiftPackageReference "CalendarKit.git" */;
 			productName = CalendarKit;
 		};
 /* End XCSwiftPackageProductDependency section */
