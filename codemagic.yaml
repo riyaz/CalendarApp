@@ -37,6 +37,8 @@ workflows:
           script: |
             PROFILES_HOME="$HOME/Library/MobileDevice/Provisioning Profiles"
             mkdir -p "$PROFILES_HOME"
+            echo "PROFILE BELOW"
+            echo "${FCI_PROVISIONING_PROFILE}"
             PROFILE_PATH="$(mktemp "$PROFILES_HOME"/$(uuidgen).mobileprovision)"
             echo ${FCI_PROVISIONING_PROFILE} | base64 --decode > $PROFILE_PATH
             echo "Saved provisioning profile $PROFILE_PATH"
