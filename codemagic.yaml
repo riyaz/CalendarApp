@@ -13,7 +13,7 @@ workflows:
             # APP_STORE_CONNECT_PRIVATE_KEY <-- Put your App Store Connect Private Key here
             # See the following link for more details - https://docs.codemagic.io/code-signing-yaml/signing-ios/
             # https://appstoreconnect.apple.com/access/api
-          - other
+#          - other
         vars:
           XCODE_WORKSPACE: "Calendar.xcodeproj" # <-- Put the name of your workspace here.
           XCODE_SCHEME: "Calendar" # <-- Put the name of your scheme here.
